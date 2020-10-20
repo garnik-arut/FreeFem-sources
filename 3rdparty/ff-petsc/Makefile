@@ -38,7 +38,6 @@ PETSC_OPENBLAS = --with-blaslapack-include='$(shell echo $(BLASINC) | sed "s/-I/
 PETSC_OPENBLAS_C = $(PETSC_OPENBLAS)
 endif
 PETSC_DOWNLOAD_C := --with-metis-dir=$(DIR_INSTALL_REAL) \
-		--with-ptscotch-dir=$(DIR_INSTALL_REAL) \
 		--with-suitesparse-include='$(SUITESPARSE_INCLUDE)' --with-suitesparse-lib='$(SUITESPARSE_LIB)' \
 		--with-parmetis-dir=$(DIR_INSTALL_REAL) \
 		--with-tetgen-dir=$(DIR_INSTALL_REAL)
@@ -46,7 +45,6 @@ ifeq ($(PETSC_PKG),yes)
 pkg_dir=$(abspath $(dir $(mkfile_path))/pkg)
 PETSC_DOWNLOAD := --download-scalapack=$(pkg_dir)/pkg-scalapack.tar.gz \
 		--download-metis=$(pkg_dir)/pkg-metis.tar.gz \
-		--download-ptscotch=$(pkg_dir)/scotch-v6.0.9.tar.gz \
 		--download-mumps=$(pkg_dir)/pkg-mumps.tar.gz \
 		--download-hypre=$(pkg_dir)/hypre.tar.gz \
 		--download-parmetis=$(pkg_dir)/pkg-parmetis.tar.gz \
@@ -64,7 +62,7 @@ PETSC_DOWNLOAD := $(PETSC_DOWNLOAD) --download-hpddm=$(pkg_dir)/hpddm.tar.gz
 PETSC_DOWNLOAD_C := $(PETSC_DOWNLOAD_C) --download-hpddm=$(pkg_dir)/hpddm.tar.gz
 endif
 else
-PETSC_DOWNLOAD := --download-metis --download-ptscotch \
+PETSC_DOWNLOAD := --download-metis \
 		--download-hypre --download-parmetis \
 		--download-superlu --download-suitesparse --download-tetgen \
 		--download-slepc
